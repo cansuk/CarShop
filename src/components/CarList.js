@@ -10,9 +10,11 @@ import SortBox from './SortBox';
 const CarList = ({ params }) => {
     const [state, setState] = useState({ cars: [], totalPageCount: 0, totalCarsCount: 0 });
 
+    const { getCars, getCarsByCriteria } = carsServices;
+
     const handlePaginationChange = ({ activePage }) => {
         const criteria = { ...params, page: activePage };
-        carsServices.getCars(criteria).then(({ cars, totalPageCount, totalCarsCount }) => {
+        getCarsByCriteria(criteria).then(({ cars, totalPageCount, totalCarsCount }) => {
             setState({ ...state, cars, totalPageCount, totalCarsCount });
         }).catch(err => {
             // TODO handle error
@@ -21,9 +23,19 @@ const CarList = ({ params }) => {
     }
 
     useEffect(() => {
-        carsServices.getCars(params).then(({ cars, totalPageCount, totalCarsCount }) => {
-            setState({ ...state, cars, totalPageCount, totalCarsCount });
-        });
+        // debugger;
+        console.log(params)
+        if (params) {
+            getCarsByCriteria(params).then(({ cars, totalPageCount, totalCarsCount }) => {
+                setState({ ...state, cars, totalPageCount, totalCarsCount });
+            });
+
+        } else {
+            getCars(params).then(({ cars, totalPageCount, totalCarsCount }) => {
+                setState({ ...state, cars, totalPageCount, totalCarsCount });
+            });
+
+        }
     }, [params]);
 
     const { paginatorOptions, sortOptions } = Constants;
@@ -35,7 +47,7 @@ const CarList = ({ params }) => {
             x.selected = (x.value === value);
         });
         const criteria = { ...params, sort: value };
-        carsServices.getCars(criteria).then(({ cars, totalPageCount, totalCarsCount }) => {
+        getCarsByCriteria(criteria).then(({ cars, totalPageCount, totalCarsCount }) => {
             setState({ ...state, cars, totalPageCount, totalCarsCount });
         }).catch(err => {
             // TODO handle error

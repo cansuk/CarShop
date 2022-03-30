@@ -6,7 +6,18 @@ const Colors = {
 }
 
 const Fonts = {
-    normal: "12px"
+    Size: {
+        small: "10px",
+        normal: "12px",
+        large: "14px",
+        xlarge: "18px",
+        xxlarge: "32px"
+    },
+    Weight: {
+        light: 300,
+        normal: 400,
+        bold: 900
+    }
 }
 
 

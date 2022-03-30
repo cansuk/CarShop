@@ -14,6 +14,7 @@ const CarTile = ({ car }) => {
     const mileageInfo = number ? `${number} ${unit}` : "Mileage info missing";
     const fuelType = car.fuelType || "Fuel type info missing"
     const { modelName = "Model name missing" } = car;
+
     return (
         <Box>
             <Container padding={"20px"}>
@@ -21,7 +22,7 @@ const CarTile = ({ car }) => {
                 <ColumnContainer>
                     <h3> {modelName} </h3>
                     <RowContainer> {stock} - <IoMdSpeedometer /> {mileageInfo} - <GiFuelTank /> {fuelType} -  <ColorBox backgroundColor={color} /> {color}  </RowContainer>
-                    <Link href=""> View Details </Link>
+                    <Link to={`/details/${car.stockNumber}`}> View Details  </Link>
                 </ColumnContainer>
             </Container>
         </Box>

@@ -12,6 +12,7 @@ const Home = () => {
 
     return (
         <>
+
             <Header />
 
             <hr />
@@ -20,6 +21,8 @@ const Home = () => {
                 <FilterBox handleFilter={handleFilter} />
                 <CarList params={state.params} />
             </Container>
+
+
         </>
     )
 }

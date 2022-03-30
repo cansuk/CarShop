@@ -9,28 +9,33 @@ align-items:  ${props => props.alignItems};
 gap:15px;
 background-color: ${props => props.color || "unset"};
 padding:${props => props.padding || 0};
+height:${props => props.height || "unset"};
 `;
 
 export const ColumnContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  flex-wrap:wrap;
   justify-content:  ${props => props.justifyContent};
   align-items:  ${props => props.alignItems};
   gap:15px;
   background-color: ${props => props.color || "unset"} ;
   flex:.9;
   padding:${props => props.padding || 0};
+  height:${props => props.height || "unset"};
 `;
 
 export const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap:wrap;
   justify-content:  ${props => props.justifyContent};
   align-items:  ${props => props.alignItems};
   gap:15px;
   background-color: ${props => props.color || "unset"};
   flex:.9;
   padding:${props => props.padding || 0};
+  height:${props => props.height || "unset"};
 `;
 
 export const Column = styled.div`
@@ -40,6 +45,7 @@ export const Column = styled.div`
   max-width: ${props => props.width || "100%"};
   justify-content:${props => props.justifyContent || "center"};
   align-items:${props => props.alignItems || "center"};
+  height:${props => props.height || "unset"};
 `;
 
 
@@ -63,4 +69,36 @@ export const Left = styled.div`
 *:first-child{
     float:left;
 }
+`;
+
+export const RelativeContainer = styled.div`
+position:relative;
+`;
+
+const PositionedContainer = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content:start;
+    flex-wrap:wrap;
+`;
+
+export const BottomLeftPositioned = styled(PositionedContainer)`
+    bottom: 3px;
+    left: 0px;
+`;
+
+export const BottomRightPositioned = styled(PositionedContainer)`
+    bottom: 3px;
+    right: 0px;
+`;
+
+export const TopLeftPositioned = styled(PositionedContainer)`
+    top: 1px;
+    left: 0px;
+`;
+
+export const TopRightPositioned = styled(PositionedContainer)`
+    top: 1px;
+    right: 0px;
 `;

@@ -15,7 +15,12 @@ const FilterBox = ({ handleFilter }) => {
         filterParams: {}
     }
 
-    const ActionTypes = { SET_COLORS: "SET_COLORS", SET_MANUFACTURERS: "SET_MANUFACTURERS", SET_FILTER: "SET_FILTER" }
+    const ActionTypes = {
+        SET_COLORS: "SET_COLORS",
+        SET_MANUFACTURERS: "SET_MANUFACTURERS",
+        SET_FILTER: "SET_FILTER",
+        RESET_FILTER: "RESET_FILTER"
+    }
 
     const filterReducer = (state, action) => {
         switch (action.type) {
@@ -24,9 +29,12 @@ const FilterBox = ({ handleFilter }) => {
             case ActionTypes.SET_MANUFACTURERS:
                 return { ...state, manufacturers: action.manufacturers };
             case ActionTypes.SET_FILTER:
-
                 return {
                     ...state, filterParams: { ...action.filterParams }
+                };
+            case ActionTypes.RESET_FILTER:
+                return {
+                    ...initialState
                 };
             default:
                 throw new Error("Something went wrong...");
@@ -79,6 +87,20 @@ const FilterBox = ({ handleFilter }) => {
                 {manufacturers.length > 0 ? <SelectCheckbox options={manufacturers} label={"Manufacturer"} grouped onChange={handleSelect} /> : "Loading . . ."}
 
                 <Right> <Button onClick={() => handleFilter(filterParams)}> Filter </Button> </Right>
+
+                <Right>
+                    <Button onClick={() => {
+                        dispatch({ type: ActionTypes.RESET_FILTER });
+
+                        // dispatch({ type: ActionTypes.SET_COLORS, colorsOptions: colors.reduce((acc, curr) => [...acc, { text: curr, value: curr, selected: false }], []) });
+                        dispatch({ type: ActionTypes.SET_COLORS, colorsOptions: colors.map(x => { x.selected = false; return x; }) });
+
+                        dispatch({ type: ActionTypes.SET_MANUFACTURERS, manufacturers: manufacturers.map(x => { x.checked = false; return x; }) });
+
+                        handleFilter(initialState.filterParams);
+                    }}> Reset Filter
+                    </Button>
+                </Right>
 
             </ColumnContainer>
 

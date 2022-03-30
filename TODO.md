@@ -21,9 +21,6 @@
 &#9744; select default val please select
 
 
-
-
-
 &#9744; Açıklama eklenecek konular : Neden useState yerine useReducer kullandım.
 &#9744; Açıklama eklenecek konular : Çoklu manufacturer seçilebiliyor ama api modeli tek isimle filtre requestini kabul ediyor.
 

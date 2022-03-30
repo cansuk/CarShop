@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 import { Variables } from "./Variables";
+import { NavLink } from "react-router-dom";
 
-
-export const Link = styled.a`
+export const Link = styled(NavLink)`
 cursor:pointer;
 line-height:2;
 href:${props => props.href};
