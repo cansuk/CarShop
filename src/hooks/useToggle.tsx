@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export const useToggle = (initialValue, toggleArr) => {
+export const useToggle = (initialValue: any, toggleArr: any) => {
     const [value, setValue] = useState(initialValue);
     return [
         value,
         {
             set: setValue,
-            toggle: () => setValue(val => toggleArr.filter(x => x !== val)?.[0])
+            toggle: () => setValue((val: any) => toggleArr.filter((x: any) => x !== val)?.[0])
         }
     ];
 };

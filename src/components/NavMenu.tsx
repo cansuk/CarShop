@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Constants } from '../constants';
-import { Column, End, Row, RowContainer } from '../styled-components/Layout'
+import { Column, End, RowContainer } from '../styled-components/Layout'
 import { MenuLink } from '../styled-components/Link';
 import { setActiveMenu } from '../redux/reducers/mainReducer';
 

@@ -1,14 +1,22 @@
-import React, { Children, useState } from 'react'
+import React, { Children, useState, MouseEventHandler } from 'react'
 import shortid from 'shortid'
 import { ColumnContainer } from '../styled-components/Layout'
 import Collapsible from './Collapsible'
 
-const SelectCheckbox = ({ label, options, grouped, onChange, multiple = false }) => {
+type Props = {
+    onChange: MouseEventHandler,
+    label: String,
+    options: Array,
+    grouped: Boolean,
+    multiple: Boolean
+}
+
+const SelectCheckbox = ({ label, options, grouped, onChange, multiple = false }: Props) => {
     const handleCheck = (e) => {
         e.stopPropagation();
         console.log(e.target.name, e.target.checked);
         const { value, checked } = e.target;
-        const subOptions = document.querySelectorAll(`*[data-parent='${value}']`);
+        const subOptions: NodeListOf<Element> = document.querySelectorAll(`*[data-parent='${value}']`);
         subOptions.forEach(subOption => { subOption.checked = checked; });
         if (checked) {
             //   setCheckedItems([...value])
