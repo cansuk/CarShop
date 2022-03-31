@@ -2,11 +2,13 @@ import styled, { css } from "styled-components";
 import { Variables } from "./Variables";
 import { NavLink } from "react-router-dom";
 
+const { Colors } = Variables;
+
 export const Link = styled(NavLink)`
 cursor:pointer;
 line-height:2;
 href:${props => props.href};
-color:${props => props.color || Variables.Colors.primaryColor};
+color:${props => props.color || Colors.primaryColor};
 text-decoration:none;
 
 &:hover {
@@ -21,6 +23,25 @@ ${props =>
     css`
         font-weight: 700;
         color:rgba(156,216,132,.85);
+        text-decoration:underlined;
+        `}  
+
+`;
+
+export const MenuLink = styled(NavLink)`
+cursor:pointer;
+line-height:2;
+color:${props => props.color || Colors.fontColor};
+text-decoration:none;
+
+padding:10px 15px;
+
+  
+${props =>
+    props.active &&
+    css`
+        font-weight: 700;
+        color:${Colors.primaryColor};
         text-decoration:underlined;
         `}  
 

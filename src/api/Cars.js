@@ -31,10 +31,7 @@ const getCars = async () => new Promise(async (resolve, reject) => {
 const getCarsByCriteria = async (params) => new Promise(async (resolve, reject) => {
     try {
         const { Color: color, Manufacturer: manufacturer, page = 1, sort } = params;
-        let url = new URL(`${API_URL}/cars`);
-        // let urlParams = new URLSearchParams(url.search);
-        let urlParams = {};
-
+        let url = new URL(`${API_URL}/cars`), urlParams = {};
 
         if (color) {
             urlParams = { ...urlParams, "color": color }
@@ -49,28 +46,6 @@ const getCarsByCriteria = async (params) => new Promise(async (resolve, reject) 
             urlParams = { ...urlParams, "sort": sort }
         }
 
-        //  let url = `${API_URL}/cars?color=${color}&manufacturer=${manufacturer}&page=${page}`;
-        // const url = new URL(`${API_URL}/cars`);
-        // const urlparams = new URLSearchParams(url.search);
-
-        // urlparams.append("color", color);
-        // urlparams.append("manufacturer", manufacturer);
-        // urlparams.append("page", page);
-        // urlparams.append("sort", sort);
-
-
-        //Add a third parameter.
-        // urlparams.set("color", color);
-        // urlparams.set("manufacturer", manufacturer);
-        // urlparams.set("page", page);
-        // urlparams.set("sort", sort);
-        // params.toString();
-
-        debugger;
-
-        // const response = await axios.get(`${API_URL}/cars`, {
-        //     data: urlParams
-        // });
         const response = await axios.get(`${API_URL}/cars`, {
             params: urlParams
         });

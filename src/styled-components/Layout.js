@@ -35,7 +35,7 @@ export const RowContainer = styled.div`
   background-color: ${props => props.color || "unset"};
   flex:.9;
   padding:${props => props.padding || 0};
-  height:${props => props.height || "unset"};
+  height:${props => props.height || "inherit"};
 `;
 
 export const Column = styled.div`

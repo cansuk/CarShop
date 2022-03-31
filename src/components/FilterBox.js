@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import { colorsServices } from '../api/Colors';
 import { manufacturersService } from '../api/Manufacturers';
-import { Box } from '../styled-components/Box';
+import { FilterBox as Box } from '../styled-components/Box';
 import { Button } from '../styled-components/Button';
 import { ColumnContainer, Right } from '../styled-components/Layout';
 import { Lib } from '../utils/lib';

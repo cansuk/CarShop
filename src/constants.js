@@ -19,4 +19,11 @@ const messages = {
     `
 }
 
-export const Constants = { sortOptions, paginatorOptions, messages };
+export const routeKeys = {
+    purchase: "purchase",
+    orders: "orders",
+    sell: "sell",
+
+}
+
+export const Constants = { sortOptions, paginatorOptions, messages, routeKeys };

@@ -64,25 +64,23 @@ export const Paginator = ({ defaultActivePage, totalPages, handlePaginationChang
             </span>
 
             | Go to page:
-            {/* <input
+            <input
                 readOnly={totalPages === 1}
                 type="number"
-                max={3}
                 defaultValue={pageIndex}
                 onChange={e => {
                     const page = e.target.value ? Number(e.target.value) : 1
-                    dispatch({ type: 'SET_PAGE', pageIndex: page });
+                    if (page <= totalPages && page > 0) {
+                        dispatch({ type: 'SET_PAGE', pageIndex: page });
+                    }
                 }}
                 style={{ width: '100px' }}
-            /> */}
+            />
 
-            <> {pageIndex} <input type="range" min="1" max="3" step="1" readOnly={totalPages === 1}
-                onChange={e => {
-                    const page = e.target.value ? Number(e.target.value) : 1
-                    dispatch({ type: 'SET_PAGE', pageIndex: page });
-                }} />
-            </>
             <Button onClick={() => {
+                if (pageIndex <= totalPages && pageIndex > 0) {
+                    dispatch({ type: 'SET_PAGE', pageIndex: pageIndex });
+                }
                 dispatch({ type: 'GO_TO_PAGE', pageIndex: pageIndex });
             }}> Go  </Button>
 

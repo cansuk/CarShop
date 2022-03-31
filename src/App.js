@@ -8,14 +8,20 @@ import {
 } from "react-router-dom";
 import { CarDetails } from './components/CarDetails';
 import NotFound from './components/NotFound';
+import Purchase from './components/Purchase';
+import Header from './components/Header';
 
 function App() {
   return <Router>
-
+    <Header />
     <Routes>
       <Route exact path="/" element={<Home />} />
+      <Route exact path="/home" element={<Home />} />
       <Route exact path="/notFound" element={<NotFound />} />
       <Route path="/details/:stock" element={<CarDetails />} />
+      <Route path="/purchase" element={<Purchase />} />
+      <Route path="/orders" element={<Purchase />} />
+      <Route path="/sell" element={<Purchase />} />
       <Route
         path="*"
         element={

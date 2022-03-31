@@ -4,6 +4,7 @@ import { carsServices } from '../api/Cars';
 import { Constants } from '../constants';
 import { ColumnContainer, Container, Row, RowContainer } from '../styled-components/Layout'
 import CarTile from './CarTile'
+import Footer from './Footer';
 import { Paginator } from './Paginator';
 import SortBox from './SortBox';
 
@@ -77,6 +78,7 @@ const CarList = ({ params }) => {
             <Paginator defaultActivePage={1} totalPages={state.totalPageCount} handlePaginationChange={handlePaginationChange} />
 
         </ColumnContainer>
+
     )
 }
 
