@@ -11,7 +11,7 @@ import NotFound from './components/NotFound';
 import Purchase from './components/Purchase';
 import Header from './components/Header';
 import { Liner } from './styled-components/Liner';
-import { useSelector } from 'react-redux';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -35,6 +35,10 @@ function App() {
         }
       />
     </Routes>
+
+    <Liner />
+
+    <Footer />
 
   </Router>
 }

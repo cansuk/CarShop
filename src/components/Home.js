@@ -23,7 +23,6 @@ const Home = () => {
 
     return (
         <>
-
             <Container padding={"45px"}>
                 <FilterBox handleFilter={handleFilter} />
                 <CarList params={state.params} />
@@ -32,10 +31,6 @@ const Home = () => {
             <Scroll />
 
             <Liner />
-
-            <Footer />
-
-
 
         </>
     )
