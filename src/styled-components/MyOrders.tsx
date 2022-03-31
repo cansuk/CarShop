@@ -1,10 +1,10 @@
 import React from 'react'
-import { Font } from '../styled-components/Text'
-import { ColumnContainer } from '../styled-components/Layout'
-import { Link } from '../styled-components/Link';
-import { Variables } from '../styled-components/Variables';
+import { Font } from './Text'
+import { ColumnContainer } from './Layout'
+import { Link } from './Link';
+import { Variables } from './Variables';
 
-const Sell = () => {
+const MyOrders = () => {
     const { Fonts } = Variables;
     const { Size, Weight } = Fonts;
 
@@ -16,4 +16,4 @@ const Sell = () => {
     )
 }
 
-export default Sell;
+export default MyOrders;

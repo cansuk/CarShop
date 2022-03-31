@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { HeaderContainer } from '../styled-components/HeaderContainer';
 import { End, FlexGrow1, RowContainer, Start } from '../styled-components/Layout';
 import { Link } from '../styled-components/Link';
