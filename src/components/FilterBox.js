@@ -5,7 +5,7 @@ import { FilterBox as Box } from '../styled-components/Box';
 import { Button } from '../styled-components/Button';
 import { ColumnContainer, Container, Right } from '../styled-components/Layout';
 import { Padded } from '../styled-components/Spacing';
-import { Lib } from '../utils/lib';
+import { Lib } from '../utils/helper';
 import Select from './Select';
 import SelectCheckbox from './SelectCheckbox';
 

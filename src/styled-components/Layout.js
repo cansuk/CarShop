@@ -6,7 +6,7 @@ flex-direction: row;
 flex-wrap:wrap;
 justify-content:  ${props => props.justifyContent};
 align-items:  ${props => props.alignItems};
-gap:30px;
+gap:${props => props.gap || "30px"};
 background-color: ${props => props.color || "unset"};
 padding:${props => props.padding || 0};
 height:${props => props.height || "unset"};

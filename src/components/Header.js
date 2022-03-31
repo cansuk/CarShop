@@ -9,13 +9,10 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <RowContainer>
+            <RowContainer justifyContent="center" alignItems="center">
                 <Start>
-                    {/* TODO CANSU : UNCOMMENT <ResponsiveImage src="https://auto1-js-task-api--mufasa71.repl.co/images/logo.png" /> */}
-                    <ResponsiveImage src="asd" />
-                    <Link to="/home"> <ResponsiveImage src="smiley.gif" alt="logo" /> </Link>
+                    <Link to="/home"> <ResponsiveImage src="https://auto1-js-task-api--mufasa71.repl.co/images/logo.png" width="200px" height="40px" /> </Link>
                 </Start>
-
                 <End>
                     <NavMenu />
                 </End>

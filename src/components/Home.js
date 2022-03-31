@@ -23,7 +23,6 @@ const Home = () => {
 
     return (
         <>
-            <Liner />
 
             <Container padding={"45px"}>
                 <FilterBox handleFilter={handleFilter} />
