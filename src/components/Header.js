@@ -3,6 +3,7 @@ import { HeaderContainer } from '../styled-components/HeaderContainer';
 import { End, FlexGrow1, RowContainer, Start } from '../styled-components/Layout';
 import { Link } from '../styled-components/Link';
 import { ResponsiveImage } from '../styled-components/ResponsiveImg';
+import logo from '../assets/logo.png';
 import NavMenu from './NavMenu';
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
         <HeaderContainer>
             <RowContainer justifyContent="center" alignItems="center">
                 <Start>
-                    <Link to="/home"> <ResponsiveImage src="https://auto1-js-task-api--mufasa71.repl.co/images/logo.png" width="200px" height="40px" /> </Link>
+                    <Link to="/home"> <ResponsiveImage src={logo} width="200px" height="40px" /> </Link>
                 </Start>
                 <End>
                     <NavMenu />

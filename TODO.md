@@ -21,6 +21,7 @@
 &#9744; select default val please select
 &#9744; hook best practices
 &#9744; app açılış tarayıcı logo ve urlde yaza adresin  auto1Com olması
+&#9744; clear console errors
 
 
 &#9744; Açıklama eklenecek konular : Neden useState yerine useReducer kullandım.
