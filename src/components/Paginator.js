@@ -43,7 +43,7 @@ export const Paginator = ({ defaultActivePage, totalPages, handlePaginationChang
     const [state, dispatch] = useReducer(pagingReducer, initialState);
     const { pageIndex, disabled } = state;
 
-    return totalPages?.length > 0 ? <div className="pagination">
+    return <div className="pagination">
         <Container>
             <button onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: 1 })} disabled={disabled.firstPage}>
                 <MdFirstPage />
@@ -93,6 +93,4 @@ export const Paginator = ({ defaultActivePage, totalPages, handlePaginationChang
 
 
     </div>
-        :
-        <></>
 }

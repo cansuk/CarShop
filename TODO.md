@@ -19,6 +19,9 @@
 &#9744; clear filters
 &#9744; add redux
 &#9744; select default val please select
+&#9744; change app title and logo
+&#9744; add pages layer
+
 
 
 
@@ -26,5 +29,6 @@
 
 &#9744; Açıklama eklenecek konular : Neden useState yerine useReducer kullandım.
 &#9744; Açıklama eklenecek konular : Çoklu manufacturer seçilebiliyor ama api modeli tek isimle filtre requestini kabul ediyor.
+&#9744; Explain what is mock
 
 
