@@ -7,6 +7,8 @@ export const Box = styledComponents.div`
     border:2px solid ${Colors.borderColor};
     padding:${props => props.padding || "unset"};
     height:${props => props.height || "unset"};
+    border-radius:${props => props.rounded ? "30px" : "unset"};
+    box-shadow: ${props => props.shadowed ? "1px 5px 10px  " + Colors.boxShadowColor : "unset"};    
 `;
 
 export const FilterBox = styledComponents(Box)`

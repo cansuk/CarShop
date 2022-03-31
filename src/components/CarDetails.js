@@ -16,7 +16,7 @@ export const CarDetails = () => {
     const [car, setCar] = useState(null);
     const { getCarsByStockNumber } = carsServices;
     const { messages } = Constants;
-    const { stockPositiveMsg, stockNegativeMsg } = messages;
+    const { stockPositiveMsg, stockNegativeMsg, addToFavoritesMsg } = messages;
 
 
     useEffect(() => {
@@ -51,17 +51,20 @@ export const CarDetails = () => {
                     <ColumnContainer>
                         <h3> {car.modelName} </h3>
                         <RowContainer> Stock # ${car.stockNumber} - <IoMdSpeedometer /> {car.mileage.number} {car.mileage.unit} - <GiFuelTank /> {car.fuelType} -  <ColorBox backgroundColor={car.color} /> {car.color}  </RowContainer>
-                        <p>
-                            This car is currently available and can be delivered as soon as tomorrow morning. Please be aware that delivery times shown in . . .
-                        </p>
+                        {stockPositiveMsg}
                     </ColumnContainer >
                     <ColumnContainer>
-                        <BoxRelative>
+                        <Box>
                             <Padded vertical="100px" horizontal="50px">
-                                {stockPositiveMsg}
-                                <BottomRightPositioned> <Button onClick={() => handleSave({ car })}> Save </Button> </BottomRightPositioned>
+                                {addToFavoritesMsg}
+                                <Right>
+                                    <Padded vertical="30px" horizontal="30px">
+                                        <Button animated onClick={() => handleSave({ car })}> Save </Button>
+                                    </Padded>
+                                </Right>
+
                             </Padded>
-                        </BoxRelative>
+                        </Box>
                     </ColumnContainer>
                 </RowContainer >
             </Container>

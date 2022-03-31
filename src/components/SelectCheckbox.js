@@ -34,7 +34,7 @@ const SelectCheckbox = ({ label, options, grouped, onChange, multiple = false })
                         </div>
                     }
                     itemContent={
-                        option.models.map(model =>
+                        option.models?.map(model =>
                             <div key={shortid.generate()}>
                                 <input type="checkbox" label={model.name} key={shortid.generate()} data-parent={option.name} disabled checked={option.checked} />
                                 <label htmlFor={model.name}>{model.name}</label>

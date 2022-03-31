@@ -1,12 +1,10 @@
 import React from 'react';
-import { MdExpandMore, MdExpandLess } from 'react-icons/md';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { useToggle } from '../hooks/useToggle';
 import { RowContainer } from '../styled-components/Layout';
 import { Collasible as CollapsibleStyled } from '../styled-components/Collabsible';
 
 
-const Collapsible = ({ item, itemContent, initialCollapsed }) => {
+const Collapsible = ({ item, itemContent, initialCollapsed, collapseIcon, expandIcon }) => {
     const [collapsed, collapseActions] = useToggle(initialCollapsed, [true, false]);
     const { CollapsibleItem, CollapsibleItemContent } = CollapsibleStyled;
 
@@ -15,7 +13,7 @@ const Collapsible = ({ item, itemContent, initialCollapsed }) => {
     }
     return (<>
         <CollapsibleItem onClick={handleCollapse}>
-            <RowContainer justifyContent={"space-between"}> {item}  {collapsed ? <AiOutlineMinus /> : <AiOutlinePlus />}  </RowContainer>
+            <RowContainer justifyContent={"space-between"}> {item}  {collapsed ? collapseIcon : expandIcon}  </RowContainer>
         </CollapsibleItem>
         <CollapsibleItemContent style={{ display: collapsed ? "block" : "none" }}>
             {itemContent}

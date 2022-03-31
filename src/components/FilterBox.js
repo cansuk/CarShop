@@ -3,7 +3,8 @@ import { colorsServices } from '../api/Colors';
 import { manufacturersService } from '../api/Manufacturers';
 import { FilterBox as Box } from '../styled-components/Box';
 import { Button } from '../styled-components/Button';
-import { ColumnContainer, Right } from '../styled-components/Layout';
+import { ColumnContainer, Container, Right } from '../styled-components/Layout';
+import { Padded } from '../styled-components/Spacing';
 import { Lib } from '../utils/lib';
 import Select from './Select';
 import SelectCheckbox from './SelectCheckbox';
@@ -46,12 +47,16 @@ const FilterBox = ({ handleFilter }) => {
 
     useEffect(() => {
         colorsServices.getColors().then(({ colors }) => {
+            const selectAllColors = { text: "All car colors", value: "All car colors", selected: true }
             const colorsOptions = colors.reduce((acc, curr) => [...acc, { text: curr, value: curr, selected: false }], []);
-            dispatch({ type: ActionTypes.SET_COLORS, colorsOptions });
+            dispatch({ type: ActionTypes.SET_COLORS, colorsOptions: [selectAllColors, ...colorsOptions] });
         });
 
         manufacturersService.getManufacturers().then(({ manufacturers }) => {
-            dispatch({ type: ActionTypes.SET_MANUFACTURERS, manufacturers });
+            const selectAllManufacturers = { value: "All manufacturers", name: "All manufacturers", checked: true };
+            manufacturers.map(x => { x.checked = true; return x; });
+
+            dispatch({ type: ActionTypes.SET_MANUFACTURERS, manufacturers: [selectAllManufacturers, ...manufacturers] });
         });
 
     }, []);
@@ -59,22 +64,38 @@ const FilterBox = ({ handleFilter }) => {
     const handleSelect = (e) => {
         const { name, checked } = e.target;
         let value;
+        const params = {};
+
         switch (name) {
             case "Color":
                 value = e.target.value;
                 colors.forEach(x => {
                     x.selected = (x.value === value);
                 });
+                if (value !== "All car colors") {
+                    params[name] = value;
+                } else {
+                    params[name] = "";
+                }
                 break;
             case "Manufacturer":
                 value = e.target.getAttribute("value");
-                manufacturers.filter(x => x.name === value)[0].checked = checked;
+                if (value === "All manufacturers") {
+                    manufacturers.map(x => { x.checked = checked; return x; });
+                } else {
+                    manufacturers.filter(x => x.name === value)[0].checked = checked;
+                }
+                if (value !== "All manufacturers") {
+                    params[name] = value;
+                } else {
+                    params[name] = "";
+                }
                 break;
             default:
                 break;
         }
-        const params = {};
-        params[name] = value;
+
+
         dispatch({ type: ActionTypes.SET_FILTER, filterParams: { ...filterParams, ...params } });
     }
 
@@ -83,13 +104,16 @@ const FilterBox = ({ handleFilter }) => {
             <ColumnContainer padding={"45px"}>
 
                 {colors.length > 0 ? <Select options={colors} label={"Color"} onChange={handleSelect} /> : "Loading . . ."}
+                <Padded vertical="10px" />
 
                 {manufacturers.length > 0 ? <SelectCheckbox options={manufacturers} label={"Manufacturer"} grouped onChange={handleSelect} /> : "Loading . . ."}
 
-                <Right> <Button onClick={() => handleFilter(filterParams)}> Filter </Button> </Right>
+
+
+                <Right> <Button animated onClick={() => handleFilter(filterParams)}> Filter </Button> </Right>
 
                 <Right>
-                    <Button onClick={() => {
+                    <Button animated onClick={() => {
                         dispatch({ type: ActionTypes.RESET_FILTER });
 
                         // dispatch({ type: ActionTypes.SET_COLORS, colorsOptions: colors.reduce((acc, curr) => [...acc, { text: curr, value: curr, selected: false }], []) });

@@ -16,7 +16,9 @@ const messages = {
     conditions.`,
     stockNegativeMsg: `
     This car is not currently available... 
-    `
+    `,
+    addToFavoritesMsg: `If you like this car, click the button and 
+    save it in your collection of favourite items`
 }
 
 export const routeKeys = {

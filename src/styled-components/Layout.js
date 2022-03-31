@@ -6,7 +6,7 @@ flex-direction: row;
 flex-wrap:wrap;
 justify-content:  ${props => props.justifyContent};
 align-items:  ${props => props.alignItems};
-gap:15px;
+gap:30px;
 background-color: ${props => props.color || "unset"};
 padding:${props => props.padding || 0};
 height:${props => props.height || "unset"};
@@ -63,6 +63,7 @@ export const End = styled.div`
 export const Right = styled.div`
 *:first-child{
     float:right;
+    
 }
 `;
 export const Left = styled.div`

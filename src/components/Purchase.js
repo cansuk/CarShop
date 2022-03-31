@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Font } from '../styled-components/Font'
+import { Font } from '../styled-components/Text'
 import { ColumnContainer } from '../styled-components/Layout'
 import { Link } from '../styled-components/Link';
 import { Variables } from '../styled-components/Variables';

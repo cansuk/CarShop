@@ -2,6 +2,9 @@ import { useReducer } from "react";
 import { MdFirstPage, MdLastPage, MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import { Button } from "../styled-components/Button";
 import { Container } from "../styled-components/Layout";
+import { Link } from '../styled-components/Link';
+import { Font, Text } from '../styled-components/Text'
+import { Variables } from "../styled-components/Variables";
 // import { Button } from "../../styled-components/Button";
 // import { colors } from "../../styled-components/Variables";
 // import { Row } from "../../styled-components/Layout";
@@ -9,6 +12,8 @@ import { Container } from "../styled-components/Layout";
 
 
 export const Paginator = ({ defaultActivePage, totalPages, handlePaginationChange }) => {
+    const { Fonts } = Variables;
+    const { Size, Weight } = Fonts;
 
     const initialState = {
         pageIndex: defaultActivePage,
@@ -23,6 +28,9 @@ export const Paginator = ({ defaultActivePage, totalPages, handlePaginationChang
     const pagingReducer = (state, action) => {
         switch (action.type) {
             case 'GO_TO_PAGE':
+                if (action.pageIndex === 0 || action.pageIndex > totalPages) {
+                    return { ...state };
+                }
                 handlePaginationChange({ activePage: action.pageIndex });
                 window.scrollTo(0, 0);
                 switch (action.pageIndex) {
@@ -44,49 +52,27 @@ export const Paginator = ({ defaultActivePage, totalPages, handlePaginationChang
     const { pageIndex, disabled } = state;
 
     return totalPages ? <div className="pagination">
-        <Container>
-            <button onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: 1 })} disabled={disabled.firstPage}>
-                <MdFirstPage />
-            </button>
-            <button onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: pageIndex - 1 })} disabled={disabled.prevPage}>
-                <MdNavigateBefore />
-            </button>
-            <button onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: pageIndex + 1 })} disabled={disabled.nextPage}>
-                <MdNavigateNext />
-            </button>
-            <button onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: totalPages })} disabled={disabled.lastPage}>
-                <MdLastPage />
-            </button>
-            <span>
-                Page <strong>
-                    {pageIndex} of {totalPages}
-                </strong>
-            </span>
+        <Container justifyContent="center">
 
-            | Go to page:
-            <input
-                readOnly={totalPages === 1}
-                type="number"
-                defaultValue={pageIndex}
-                onChange={e => {
-                    const page = e.target.value ? Number(e.target.value) : 1
-                    if (page <= totalPages && page > 0) {
-                        dispatch({ type: 'SET_PAGE', pageIndex: page });
-                    }
-                }}
-                style={{ width: '100px' }}
-            />
+            <Text linkView onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: 1 })} disabled={disabled.firstPage}>
+                First
+            </Text>
 
-            <Button onClick={() => {
-                if (pageIndex <= totalPages && pageIndex > 0) {
-                    dispatch({ type: 'SET_PAGE', pageIndex: pageIndex });
-                }
-                dispatch({ type: 'GO_TO_PAGE', pageIndex: pageIndex });
-            }}> Go  </Button>
+            <Text linkView onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: pageIndex - 1 })} disabled={disabled.prevPage}>
+                Previous
+            </Text>
 
-            <Button onClick={() => { window.scrollTo(0, 0); }}> Scroll to top  </Button>
+            <Text color={Variables.Colors.fontColor}>
+                Page {pageIndex} of {totalPages}
+            </Text>
 
+            <Text linkView onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: pageIndex + 1 })} disabled={disabled.nextPage}>
+                Next
+            </Text>
 
+            <Text linkView onClick={() => dispatch({ type: 'GO_TO_PAGE', pageIndex: totalPages })} disabled={disabled.lastPage}>
+                Last
+            </Text>
         </Container>
 
 

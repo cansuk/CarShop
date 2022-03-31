@@ -2,7 +2,8 @@ const Colors = {
     primaryColor: '#EA7F28',
     borderColor: '#EDEDED',
     activeColor: '#D37324',
-    fontColor: '#505050'
+    fontColor: '#505050',
+    boxShadowColor: "#505050b3"
 }
 
 const Fonts = {

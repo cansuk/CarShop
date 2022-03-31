@@ -1,6 +1,6 @@
 import React from 'react'
 import { Constants } from '../constants'
-import { Font } from '../styled-components/Font'
+import { Font } from '../styled-components/Text'
 import { ColumnContainer, Container } from '../styled-components/Layout'
 import { Link } from '../styled-components/Link'
 import { ResponsiveImage } from '../styled-components/ResponsiveImg'

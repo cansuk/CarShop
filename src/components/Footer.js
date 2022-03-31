@@ -6,7 +6,7 @@ import { BiCopyright } from 'react-icons/bi';
 const Footer = () => {
     return (
         <Container height="100px">
-            <RowContainer justifyContent="center" alignItems="center"> <BiCopyright /> {"AUTO1 Group 2018"} </RowContainer>
+            <RowContainer justifyContent="center" alignItems="center"> <BiCopyright /> {"AUTO1 Group 2022"} </RowContainer>
         </Container>
     )
 }
