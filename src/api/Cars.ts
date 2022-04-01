@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL;
  * @param empty
  * @return promise
  */
-const getCars = async () => new Promise(async (resolve, reject) => {
+const getCars = async () => new Promise<ICars>(async (resolve, reject) => {
     try {
         let url = `${API_URL}/cars`;
 
@@ -28,7 +28,7 @@ const getCars = async () => new Promise(async (resolve, reject) => {
  * @param criteria
  * @return promise
  */
-const getCarsByCriteria = async (params) => new Promise(async (resolve, reject) => {
+const getCarsByCriteria = async (params: ICarFilter) => new Promise<ICars>(async (resolve, reject) => {
     try {
         const { Color: color, Manufacturer: manufacturer, page = 1, sort } = params;
         let url = new URL(`${API_URL}/cars`), urlParams = {};
@@ -52,7 +52,7 @@ const getCarsByCriteria = async (params) => new Promise(async (resolve, reject) 
 
 
         if (response.status === 200) {
-            resolve(response.data);
+            resolve(response.data as ICars);
         } else {
             reject(response.statusText);
         }
@@ -67,15 +67,14 @@ const getCarsByCriteria = async (params) => new Promise(async (resolve, reject) 
  * @param id
  * @return promise
  */
-const getCarsByStockNumber = async ({ params }) => new Promise(async (resolve, reject) => {
+const getCarsByStockNumber = async (stockNumber: number): Promise<ICar> => new Promise<ICar>(async (resolve, reject) => {
+    // const getCarsByStockNumber = async ({ params }: { params: ICarFilter }): Promise<ICar> => new Promise<ICar>(async (resolve, reject) => {
     try {
-        const { stock } = params;
-
-        let url = `${API_URL}/cars/${stock}`;
+        let url = `${API_URL}/cars/${stockNumber}`;
         const response = await axios.get(url);
 
         if (response.status === 200) {
-            resolve(response.data);
+            resolve(response.data as ICar);
         } else {
             reject(response.statusText);
         }

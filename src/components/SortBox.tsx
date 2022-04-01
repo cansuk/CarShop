@@ -5,8 +5,8 @@ import { Container, Right } from '../styled-components/Layout'
 import Select from './Select'
 
 type Props = {
-    onSort: MouseEventHandler,
-    options: [],
+    onSort: Event | unknown,
+    options: ISortOptions[],
 }
 
 const SortBox = ({ options, onSort }: Props) => {

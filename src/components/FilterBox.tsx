@@ -1,15 +1,19 @@
 import React, { useEffect, useReducer } from 'react';
 import { colorsServices } from '../api/Colors';
 import { manufacturersService } from '../api/Manufacturers';
+import { RootState } from '../redux/reducers/rootReducer';
 import { FilterBox as Box } from '../styled-components/Box';
 import { Button } from '../styled-components/Button';
 import { ColumnContainer, Container, Right } from '../styled-components/Layout';
 import { Padded } from '../styled-components/Spacing';
-import { Lib } from '../utils/helper';
 import Select from './Select';
 import SelectCheckbox from './SelectCheckbox';
 
-const FilterBox = ({ handleFilter }) => {
+type Props = {
+    handleFilter: Event
+}
+
+const FilterBox = ({ handleFilter }: Props) => {
     const initialState = {
         colors: [],
         manufacturers: [],

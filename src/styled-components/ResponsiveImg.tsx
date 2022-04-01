@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const ResponsiveImage = styled.img`
+interface IResponsiveImage {
+    url?: string
+}
+
+export const ResponsiveImage = styled.img<IResponsiveImage>`
 width:${props => props.width};    
 height:${props => props.height};    
 max-width: 100%;    
@@ -8,7 +12,7 @@ height: auto;
 src: ${props => props.src};  
 `;
 
-export const ResponsiveImageSvg = styled.object`
+export const ResponsiveImageSvg = styled.object<IResponsiveImage>`
 width:${props => props.width};    
 height:${props => props.height};    
 // max-width: 100%;       
@@ -25,7 +29,7 @@ background-size: contain;
 data: ${props => props.data}; 
 `;
 
-export const BackgroundImageSvg = styled.div`
+export const BackgroundImageSvg = styled.div<IResponsiveImage>`
 background: ${props => `url(${props.url})`} no-repeat center;
 width:80px;
 background-size:contain;

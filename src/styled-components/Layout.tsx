@@ -1,18 +1,28 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap:wrap;
-justify-content:  ${props => props.justifyContent};
-align-items:  ${props => props.alignItems};
-gap:${props => props.gap || "30px"};
-background-color: ${props => props.color || "unset"};
-padding:${props => props.padding || 0};
-height:${props => props.height || "unset"};
+interface ILayout {
+    justifyContent?: string;
+    alignItems?: string;
+    gap?: string;
+    color?: string;
+    padding?: string;
+    height?: string;
+    width?: string;
+}
+
+export const Container = styled.div<ILayout>`
+ display: flex;
+ flex-direction: row;
+ flex-wrap:wrap;
+ justify-content: "center" ${props => props.justifyContent};
+ align-items:  ${props => props.alignItems};
+ gap:${props => props.gap || "30px"};
+ background-color: ${props => props.color || "unset"};
+ padding:${props => props.padding || 0};
+ height:${props => props.height || "unset"};
 `;
 
-export const ColumnContainer = styled.div`
+export const ColumnContainer = styled.div<ILayout>`
   display: flex;
   flex-direction: column; 
   flex-wrap:wrap;
@@ -25,7 +35,7 @@ export const ColumnContainer = styled.div`
   height:${props => props.height || "unset"};
 `;
 
-export const RowContainer = styled.div`
+export const RowContainer = styled.div<ILayout>`
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
@@ -38,7 +48,7 @@ export const RowContainer = styled.div`
   height:${props => props.height || "inherit"};
 `;
 
-export const Column = styled.div`
+export const Column = styled.div<ILayout>`
   display:flex;
   flex: 25%;
   padding: 2px 2px;

@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import { Variables } from "./Variables";
+interface IButton {
+  readonly active?: boolean;
+  rounded?: boolean;
+  shadowed?: boolean;
+  backgroundColor?: string;
+  animated?: boolean;
+}
 
-export const Button = styled.button`
+export const Button = styled.button<IButton>`
 position: relative;
 background-color: ${props => props.active ? Variables.Colors.activeColor : Variables.Colors.primaryColor};
 border: none;

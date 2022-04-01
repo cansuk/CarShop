@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { Variables } from "./Variables";
 
+interface ISelect {
+  name?: string;
+}
 
-const SelectBase = styled.select`
+const SelectBase = styled.select<ISelect>`
     height:32px;
     border: 2px solid ${Variables.Colors.borderColor};
-    font-size:${Variables.Fonts.normal};
+    font-size:${Variables.Fonts.Size.normal};
 `;
 
-export const Select = styled(SelectBase)`
+export const Select = styled(SelectBase) <ISelect>`
   name:${props => props.name}
   width: 100%;
   box-sizing: border-box;  

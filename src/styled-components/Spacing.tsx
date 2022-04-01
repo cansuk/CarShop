@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
-export const Padded = styled.div`
+
+interface IPadded {
+    padding?: string;
+    horizontal?: string;
+    vertical?: string;
+}
+
+export const Padded = styled.div<IPadded>`
     padding:${props => props.padding || "unset"};
     padding-left:${props => props.horizontal || 0};
     padding-right:${props => props.horizontal || 0};

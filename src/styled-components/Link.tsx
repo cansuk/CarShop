@@ -4,10 +4,13 @@ import { NavLink } from "react-router-dom";
 
 const { Colors } = Variables;
 
-export const Link = styled(NavLink)`
+interface ILink {
+    readonly active?: boolean;
+}
+
+export const Link = styled(NavLink) <ILink>`
 cursor:pointer;
 line-height:2;
-href:${props => props.href};
 color:${props => props.color || Colors.primaryColor};
 text-decoration:none;
 
@@ -19,8 +22,8 @@ text-decoration:none;
   }
   
 ${props =>
-    props.active &&
-    css`
+        props.active &&
+        css`
         font-weight: 700;
         color:rgba(156,216,132,.85);
         text-decoration:underlined;
@@ -28,7 +31,7 @@ ${props =>
 
 `;
 
-export const MenuLink = styled(NavLink)`
+export const MenuLink = styled(NavLink) <ILink>`
 cursor:pointer;
 line-height:2;
 color:${props => props.color || Colors.fontColor};
@@ -38,8 +41,8 @@ padding:10px 15px;
 
   
 ${props =>
-    props.active &&
-    css`
+        props.active &&
+        css`
         font-weight: 700;
         color:${Colors.primaryColor};
         text-decoration:underlined;
